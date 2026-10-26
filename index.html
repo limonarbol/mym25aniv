@@ -129,27 +129,26 @@ button {
         .botones-hoteles button {
           width: auto; /
         }
-        /* === ANIMACIÓN DE FOTOS CAÍDAS === */
+      /* === ANIMACIÓN DE FOTOS CAÍDAS === */
       .foto-animada {
         opacity: 0; /* Empiezan invisibles */
+        transform: rotate(var(--giro)); /* Toman el giro desde el principio */
       }
 
       .foto-animada.visible {
-        /* La animación dura 0.8 segundos y tiene un pequeño rebote al final */
         animation: caerFoto 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
       }
 
       @keyframes caerFoto {
         0% {
           opacity: 0;
-          /* Empieza más arriba (-100px) y un poco más grande (scale 1.1) */
-          transform: translateY(-100px) rotate(var(--giro)) scale(1.1); 
+          transform: translateY(-150px) rotate(var(--giro)) scale(1.1); 
         }
         100% {
           opacity: 1;
-          /* Cae a su posición original */
           transform: translateY(0) rotate(var(--giro)) scale(1);
         }
+      }
       }
       }
     </style>
@@ -215,26 +214,19 @@ button {
                   <hr class="rule">
         <div style="position: relative; width: 100%; max-width: 800px; margin: 1rem auto;">
           <img src="fotos/invitacion.png" alt="Invitación Bodas de Plata" style="width: 100%; display: block; border-radius: 15px;">
-          <img src="fotos/polaroid1.png" 
+<!-- Foto 1 -->
+          <img src="foto1.jpg" class="foto-animada"
                style="position: absolute; 
-                      top: 46%;
-                      left: 12%;
-                      width: 25%;
-                      --giro: -10deg; /* Aquí controlas la inclinación */
-                      transform: rotate(var(--giro));
-                      box-shadow: 3px 5px 15px rgba(0,0,0,0.3);
-                      pointer-events: none; /* Muy importante para que no bloqueen los botones de Maps */">
+                      top: 25%; left: 5%; width: 25%; 
+                      --giro: -10deg; /* Solo dejamos la variable del giro */
+                      border: 5px solid white; box-shadow: 3px 5px 15px rgba(0,0,0,0.3); border-radius: 4px; pointer-events: none;">
                       
-          <!-- Foto 2: Zona inferior derecha, inclinada hacia la derecha (8 grados) -->
-          <img src="fotos/polaroid2.png" 
+          <!-- Foto 2 -->
+          <img src="foto2.jpg" class="foto-animada"
                style="position: absolute; 
-                      top: 66%; 
-                      right: 14%; 
-                      width: 25%; 
-                      --giro: 8deg; /* Aquí controlas la inclinación */
-                      transform: rotate(var(--giro)); 
-                      box-shadow: 3px 5px 15px rgba(0,0,0,0.3); 
-                      pointer-events: none;">
+                      top: 65%; right: 5%; width: 28%; 
+                      --giro: 8deg; /* Solo dejamos la variable del giro */
+                      border: 5px solid white; box-shadow: 3px 5px 15px rgba(0,0,0,0.3); border-radius: 4px; pointer-events: none;">
                       
           <!-- ==== FIN DE FOTOS CAÍDAS ==== -->
           <a href="https://maps.app.goo.gl/RSY3oWtnY7k8A7Qn7?g_st=iw" target="_blank" 
@@ -280,6 +272,15 @@ button {
       </div>
 
     <script>
+        // Este observador vigila cuándo las fotos aparecen en pantalla
+      const observador = new IntersectionObserver((entradas) => {
+        entradas.forEach(entrada => {
+          if (entrada.isIntersecting) {
+            // Cuando la foto es visible, le agrega la clase que detona la animación
+            entrada.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.3 }); // 0.3 significa que reacciona cuando asoma el 30% de la foto
       function mostrarPregunta1() {
         document.getElementById('pantalla-portada').style.display = 'none';
         document.getElementById('pantalla-pregunta1').style.display = 'block';
@@ -294,12 +295,17 @@ button {
         document.getElementById('pantalla-pregunta2').style.display = 'none';
         document.getElementById('pantalla-pregunta3').style.display = 'block';
       }
-     function mostrarFinal() {
+function mostrarFinal() {
         document.getElementById('pantalla-pregunta3').style.display = 'none';
-        
         document.getElementById('contenedor-flores').style.display = 'none';
-        
         document.getElementById('pantalla-final').style.display = 'block';
+
+        // Cronómetro: Espera 500 milisegundos (medio segundo) y suelta las fotos
+        setTimeout(() => {
+          const fotos = document.querySelectorAll('.foto-animada');
+          fotos.forEach(foto => foto.classList.add('visible'));
+        }, 500);
+      }
       }
     
 
