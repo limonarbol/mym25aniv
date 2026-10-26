@@ -118,16 +118,16 @@ button {
 <body>
     <div id="contenedor-invitacion" style="position: relative; width: 100%; min-height: 100vh; overflow: hidden; display: grid; place-items: center; padding: 2rem;">
       
-      <!-- CAJA DE FLORES (La agrupamos para poder ocultarla después) -->
+      <!-- CAJA DE FLORES (Nombres corregidos sin espacios) -->
       <div id="contenedor-flores">
-        <img src="flor (1).png" alt="" style="position: absolute; top: 0; left: 0; width: clamp(80px, 15vw, 150px); pointer-events: none;">
-        <img src="flor (2).png" alt="" style="position: absolute; top: 0; right: 0; width: clamp(80px, 15vw, 150px); pointer-events: none;">
-        <img src="flor (3).png" alt="" style="position: absolute; bottom: 0; left: 0; width: clamp(80px, 15vw, 150px); pointer-events: none;">
-        <img src="flor (4).png" alt="" style="position: absolute; bottom: 0; right: 0; width: clamp(80px, 15vw, 150px); pointer-events: none;">
+        <img src="flor1.png" alt="" style="position: absolute; top: 0; left: 0; width: clamp(80px, 15vw, 150px); pointer-events: none;">
+        <img src="flor2.png" alt="" style="position: absolute; top: 0; right: 0; width: clamp(80px, 15vw, 150px); pointer-events: none;">
+        <img src="flor3.png" alt="" style="position: absolute; bottom: 0; left: 0; width: clamp(80px, 15vw, 150px); pointer-events: none;">
+        <img src="flor4.png" alt="" style="position: absolute; bottom: 0; right: 0; width: clamp(80px, 15vw, 150px); pointer-events: none;">
       </div>
 
+      <!-- Eliminamos el <main> duplicado que tenías -->
       <main style="position: relative; z-index: 10; width: min(100%, 48rem); text-align: center;">
-    <main>
       <!-- PANTALLA 1: PORTADA -->
       <div id="pantalla-portada">
         <p class="eyebrow">Porque a donde quiera que tú fueres, iré yo, y donde quiera que vivieres, viviré. Tu pueblo será mi pueblo, y tu Dios mi Dios.</p>
@@ -236,6 +236,8 @@ button {
       function esconderNo() {
         document.getElementById('boton-no').style.display = 'none';
         document.getElementById('mensaje-trampa').style.display = 'block';
+
+        
       }
     </script>
   </body>
