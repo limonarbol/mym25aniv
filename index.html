@@ -217,11 +217,16 @@ button {
         // Seleccionamos la pregunta 3 y la hacemos visible
         document.getElementById('pantalla-pregunta3').style.display = 'block';
       }
-      function mostrarFinal() {
+     function mostrarFinal() {
         // Ocultamos la pregunta 3
         document.getElementById('pantalla-pregunta3').style.display = 'none';
+        
+        // APAGAMOS LAS FLORES AL LLEGAR A LA INVITACIÓN
+        document.getElementById('contenedor-flores').style.display = 'none';
+        
         // Mostramos la pantalla final de éxito
         document.getElementById('pantalla-final').style.display = 'block';
+      }
       }
 
       function trampaBlanco() {
