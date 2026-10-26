@@ -91,14 +91,17 @@
       }
     </style>
   </head>
-  <body>
+<body>
     <main>
-      <p class="eyebrow">Porque a donde quiera que tú fueres, iré yo, y donde quiera que vivieres, viviré. Tu pueblo será mi pueblo, y tu Dios mi Dios.</p>
-      <h1>¿Quieres venir a nuestra boda?</h1>
-      <p class="eyebrow">Ruth 1:16</p>
-      <hr class="rule">
+      <!-- PANTALLA 1: PORTADA -->
+      <div id="pantalla-portada">
+        <p class="eyebrow">Porque a donde quiera que tú fueres, iré yo, y donde quiera que vivieres, viviré. Tu pueblo será mi pueblo, y tu Dios mi Dios.</p>
+        <p class="eyebrow">Ruth 1:16</p>
+      
+        <h1>¿Quieres venir a nuestra boda?</h1>
+        <hr class="rule">
         <br>
-        <!-- Este botón llama a la función de JavaScript al hacerle clic -->
+        
         <!-- Este es el mensaje oculto que aparecerá -->
         <p id="mensaje-trampa" style="color: var(--clay); font-style: italic; display: none;">
           (Vuelve a intentar...)
@@ -129,14 +132,6 @@
         // Seleccionamos la pregunta 1 y la hacemos visible
         document.getElementById('pantalla-pregunta1').style.display = 'block';
       }
-      <script>
-      function mostrarPregunta1() {
-        // Seleccionamos la portada y la ocultamos
-        document.getElementById('pantalla-portada').style.display = 'none';
-        
-        // Seleccionamos la pregunta 1 y la hacemos visible
-        document.getElementById('pantalla-pregunta1').style.display = 'block';
-      }
 
       function esconderNo() {
         // Ocultamos el botón "No"
@@ -145,7 +140,6 @@
         // Mostramos el mensaje de "vuelve a intentar"
         document.getElementById('mensaje-trampa').style.display = 'block';
       }
-    </script>
     </script>
   </body>
 </html>
