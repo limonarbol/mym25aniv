@@ -75,5 +75,38 @@
       <h1>Nos emociona invitarte</h1>
       <hr class="rule">
     </main>
+  <body>
+    <main>
+      <!-- PANTALLA 1: PORTADA -->
+      <div id="pantalla-portada">
+        <p class="eyebrow">Una celebración especial</p>
+        <h1>Nos emociona invitarte</h1>
+        <hr class="rule">
+        <br>
+        <!-- Este botón llama a la función de JavaScript al hacerle clic -->
+        <button onclick="mostrarPregunta1()" style="padding: 10px 20px; font-size: 1rem; cursor: pointer;">
+          Continuar
+        </button>
+      </div>
+
+      <!-- PANTALLA 2: PRIMERA PREGUNTA (Oculta por defecto) -->
+      <div id="pantalla-pregunta1" style="display: none;">
+        <p class="eyebrow">Pregunta 1 de 4</p>
+        <h2>¿Qué vas a traer como regalo de boda?</h2>
+        <button style="display: block; margin: 10px auto; padding: 10px;">Dinero, obviamente</button>
+        <button style="display: block; margin: 10px auto; padding: 10px;">Algo lindo de la lista</button>
+      </div>
+    </main>
+
+    <!-- EL CEREBRO DE TU PÁGINA (JavaScript) -->
+    <script>
+      function mostrarPregunta1() {
+        // Seleccionamos la portada y la ocultamos
+        document.getElementById('pantalla-portada').style.display = 'none';
+        
+        // Seleccionamos la pregunta 1 y la hacemos visible
+        document.getElementById('pantalla-pregunta1').style.display = 'block';
+      }
+    </script>
   </body>
 </html>
