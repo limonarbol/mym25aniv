@@ -129,6 +129,28 @@ button {
         .botones-hoteles button {
           width: auto; /
         }
+        /* === ANIMACIÓN DE FOTOS CAÍDAS === */
+      .foto-animada {
+        opacity: 0; /* Empiezan invisibles */
+      }
+
+      .foto-animada.visible {
+        /* La animación dura 0.8 segundos y tiene un pequeño rebote al final */
+        animation: caerFoto 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+      }
+
+      @keyframes caerFoto {
+        0% {
+          opacity: 0;
+          /* Empieza más arriba (-100px) y un poco más grande (scale 1.1) */
+          transform: translateY(-100px) rotate(var(--giro)) scale(1.1); 
+        }
+        100% {
+          opacity: 1;
+          /* Cae a su posición original */
+          transform: translateY(0) rotate(var(--giro)) scale(1);
+        }
+      }
       }
     </style>
   </head>
@@ -195,20 +217,22 @@ button {
           <img src="fotos/invitacion.png" alt="Invitación Bodas de Plata" style="width: 100%; display: block; border-radius: 15px;">
           <img src="fotos/polaroid1.png" 
                style="position: absolute; 
-                      top: 25%; /* Altura en la invitación */
-                      left: 5%; /* Pegada a la izquierda */
-                      width: 25%; /* Tamaño de la foto */
-                      transform: rotate(-10deg); /* Grados de inclinación */
-                      box-shadow: 3px 5px 15px rgba(0,0,0,0.3); /* Sombra para dar efecto 3D */
+                      top: 46%;
+                      left: 12%;
+                      width: 25%;
+                      --giro: -10deg; /* Aquí controlas la inclinación */
+                      transform: rotate(var(--giro));
+                      box-shadow: 3px 5px 15px rgba(0,0,0,0.3);
                       pointer-events: none; /* Muy importante para que no bloqueen los botones de Maps */">
                       
           <!-- Foto 2: Zona inferior derecha, inclinada hacia la derecha (8 grados) -->
           <img src="fotos/polaroid2.png" 
                style="position: absolute; 
-                      top: 65%; 
-                      right: 5%; 
-                      width: 28%; 
-                      transform: rotate(8deg); 
+                      top: 66%; 
+                      right: 14%; 
+                      width: 25%; 
+                      --giro: 8deg; /* Aquí controlas la inclinación */
+                      transform: rotate(var(--giro)); 
                       box-shadow: 3px 5px 15px rgba(0,0,0,0.3); 
                       pointer-events: none;">
                       
