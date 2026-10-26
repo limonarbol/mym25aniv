@@ -271,16 +271,8 @@ button {
 
       </div>
 
+<!-- EL CEREBRO DE TU PÁGINA (JavaScript) -->
     <script>
-        // Este observador vigila cuándo las fotos aparecen en pantalla
-      const observador = new IntersectionObserver((entradas) => {
-        entradas.forEach(entrada => {
-          if (entrada.isIntersecting) {
-            // Cuando la foto es visible, le agrega la clase que detona la animación
-            entrada.target.classList.add('visible');
-          }
-        });
-      }, { threshold: 0.3 }); // 0.3 significa que reacciona cuando asoma el 30% de la foto
       function mostrarPregunta1() {
         document.getElementById('pantalla-portada').style.display = 'none';
         document.getElementById('pantalla-pregunta1').style.display = 'block';
@@ -291,23 +283,25 @@ button {
         document.getElementById('pantalla-pregunta2').style.display = 'block';
       }
 
-            function mostrarPregunta3() {
+      function mostrarPregunta3() {
         document.getElementById('pantalla-pregunta2').style.display = 'none';
         document.getElementById('pantalla-pregunta3').style.display = 'block';
       }
-function mostrarFinal() {
+
+      function mostrarFinal() {
+        // Ocultamos la última pregunta y las flores de las esquinas
         document.getElementById('pantalla-pregunta3').style.display = 'none';
         document.getElementById('contenedor-flores').style.display = 'none';
+        
+        // Mostramos la invitación
         document.getElementById('pantalla-final').style.display = 'block';
 
-        // Cronómetro: Espera 500 milisegundos (medio segundo) y suelta las fotos
+        // Cronómetro: Espera medio segundo y suelta las fotos polaroid
         setTimeout(() => {
           const fotos = document.querySelectorAll('.foto-animada');
           fotos.forEach(foto => foto.classList.add('visible'));
         }, 500);
       }
-    
-    
 
       function trampaBlanco() {
         document.getElementById('boton-blanco').innerText = '¿?';
@@ -318,8 +312,6 @@ function mostrarFinal() {
       function esconderNo() {
         document.getElementById('boton-no').style.display = 'none';
         document.getElementById('mensaje-trampa').style.display = 'block';
-
-        
       }
     </script>
   </body>
