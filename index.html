@@ -15,17 +15,13 @@
 
 @font-face {
   font-family: 'Treyton';
-  /* Usaremos la versión regular para los botones */
   src: url('fonts/Treyton-Regular.otf'); 
 }
-/* Títulos con Monotype Corsiva */
 h1, h2 {
   font-family: 'Monotype Corsiva', cursive;
 }
 
-/* Botones con Treyton */
 button {
-  /* Mantén todo el código de diseño que ya tenías para el botón y asegúrate de tener esta línea: */
   font-family: 'Treyton', sans-serif;
 }
       :root {
@@ -60,7 +56,7 @@ button {
       .eyebrow {
         margin: 0 0 1.5rem;
         color: var(--olive);
-        font-family: 'IM Fell English SC', serif; /* <-- Modifica esta línea */
+        font-family: 'IM Fell English SC', serif;
         font-size: 1rem;
         font-weight: 600;
         letter-spacing: 0.14em;
@@ -71,7 +67,6 @@ button {
       h1 {
   max-width: 15ch;
   margin: 0 auto;
-  /* Si el título de la portada sigue pequeño, sube estos números (ej. clamp(4rem, 10vw, 8rem)) */
   font-size: clamp(3rem, 9vw, 6rem); 
   font-weight: 400;
   line-height: 0.98;
@@ -91,24 +86,22 @@ button {
           padding: 1.25rem;
         }
       }
-      /* Diseño de los botones */
       button {
-        background-color: transparent; /* Fondo transparente */
-        border: 1px solid var(--clay); /* Borde sutil del color de tu paleta */
-        color: var(--ink); /* Color del texto */
-        padding: 12px 24px; /* Espacio interior para que no se vea apretado */
-        font-family: inherit; /* Usa la misma fuente que el resto del texto */
+        background-color: transparent;
+        border: 1px solid var(--clay);
+        color: var(--ink);
+        padding: 12px 24px;
+        font-family: inherit;
         font-size: 1rem;
-        border-radius: 30px; /* Bordes redondeados modernos */
-        cursor: pointer; /* Cambia el cursor a una manita */
-        transition: all 0.3s ease; /* Transición suave para el efecto hover */
+        border-radius: 30px;
+        cursor: pointer;
+        transition: all 0.3s ease;
         width: 100%; 
-        max-width: 300px; /* Ancho máximo para que todos se vean uniformes */
+        max-width: 300px;
         margin: 10px auto;
         display: block;
       }
 
-      /* Efecto al pasar el mouse por encima (hover) */
       button:hover {
         background-color: var(--clay);
         color: var(--bone);
@@ -118,7 +111,6 @@ button {
 <body>
     <div id="contenedor-invitacion" style="position: relative; width: 100%; min-height: 100vh; overflow: hidden; display: grid; place-items: center; padding: 2rem;">
       
-      <!-- CAJA DE FLORES (Ahora tiene pointer-events: none y position: absolute para no estorbar) -->
       <div id="contenedor-flores" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1;">
         <img src="fotos/flor1.png" alt="" style="position: absolute; top: -10%; left: -20%; width: clamp(600px, 15vw, 1500px);">
         <img src="fotos/flor2.png" alt="" style="position: absolute; top: -10%; right: -20%; width: clamp(600px, 15vw, 1500px);">
@@ -126,45 +118,33 @@ button {
         <img src="fotos/flor4.png" alt="" style="position: absolute; bottom: -10%; right: -20%; width: clamp(600px, 15vw, 1500px);">
       </div>
 
-      <!-- ÚNICA ETIQUETA MAIN -->
       <main style="position: relative; z-index: 10; width: min(100%, 48rem); text-align: center;">
         
-        <!-- PANTALLA 1: PORTADA -->
         <div id="pantalla-portada">
           <p class="eyebrow">Porque a donde quiera que tú fueres, iré yo, y donde quiera que vivieres, viviré. Tu pueblo será mi pueblo, y tu Dios mi Dios.</p>
           <p class="eyebrow">Ruth 1:16</p>
           <hr class="rule">
-        
           <h1>¿Quieres venir a nuestras Bodas de Plata?</h1>
           <hr class="rule">
           <br>
-          
-          <!-- Este es el mensaje oculto que aparecerá -->
           <p id="mensaje-trampa" style="color: var(--clay); font-style: italic; display: none;">
             Vuelve a intentar...
           </p>
-
-          <!-- Contenedor de los botones Sí y No -->
           <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 2rem;">
             <button onclick="mostrarPregunta1()">Sí</button>
             <button id="boton-no" onclick="esconderNo()">No</button>
           </div>
         </div>
 
-        <!-- AQUÍ CONTINÚA TU PANTALLA 2 (PREGUNTA 1) EXACTAMENTE COMO LA TIENES... -->
-
-    <!-- PANTALLA 2: PRIMERA PREGUNTA -->
       <div id="pantalla-pregunta1" style="display: none;">
         <p class="eyebrow">Pregunta 1 de 3</p>
         <h2>¿Qué tanto te emociona nuestra boda?</h2>
-        <!-- Agregamos el onclick a cada botón -->
         <button onclick="mostrarPregunta2()">¡Muchísimo!</button>
         <button onclick="mostrarPregunta2()">No puedo esperar</button>
         <button onclick="mostrarPregunta2()">Ya quiero que llegue el día</button>
         <button onclick="mostrarPregunta2()">¡Estoy contando los días!</button>
       </div>
 
-      <!-- PANTALLA 3: SEGUNDA PREGUNTA -->
       <div id="pantalla-pregunta2" style="display: none;">
         <p class="eyebrow">Pregunta 2 de 3</p>
         <h2>¿Vas a llorar durante la ceremonia?</h2>
@@ -173,86 +153,58 @@ button {
         <button onclick="mostrarPregunta3()">Un poquito</button>
       </div>
 
-      <!-- PANTALLA 4: TERCERA PREGUNTA -->
       <div id="pantalla-pregunta3" style="display: none;">
         <p class="eyebrow">Pregunta 3 de 3</p>
         <h2>¿De qué color te vestirás en nuestra boda?</h2>
-        
-        <!-- Los colores válidos llevan a la pantalla final -->
         <button onclick="mostrarFinal()">Azul</button>
         <button onclick="mostrarFinal()">Rojo</button>
-        
-        <!-- El botón blanco tiene su propio ID y su propia función -->
         <button id="boton-blanco" onclick="trampaBlanco()">Blanco</button>
-        
         <button onclick="mostrarFinal()">Negro</button>
         <button onclick="mostrarFinal()">Rosa</button>
       </div>
 
-<!-- PANTALLA FINAL: APROBADO -->
       <div id="pantalla-final" style="display: none; width: 100%;">
         <p class="eyebrow">¡Aprobaste!</p>
         <h2>¡Tienes una invitación!</h2>
-        
-        <!-- CONTENEDOR DE LA IMAGEN Y BOTONES INVISIBLES -->
         <div style="position: relative; width: 100%; max-width: 600px; margin: 1rem auto;">
-          
-          <!-- Imagen de la invitación en formato PNG -->
-          <img src="fotos/invitacion.png" alt="Invitación Bodas de Plata" style="width: 100%; display: block; border-radius: 10px;">
-
-          <!-- BOTÓN INVISIBLE 1: Iglesia (Parroquia San Pablo Las Fuentes) -->
+          <img src="fotos/invitacion.png" alt="Invitación Bodas de Plata" style="width: 100%; display: block; border-radius: 5px;">
           <a href="https://maps.app.goo.gl/RSY3oWtnY7k8A7Qn7?g_st=iw" target="_blank" 
              style="position: absolute; top: 50%; left: 20%; width: 60%; height: 8%;">
           </a>
-
-          <!-- BOTÓN INVISIBLE 2: Salón (Rancho Escondido) -->
           <a href="https://maps.app.goo.gl/AX7NexusFb5s2Lbg6?g_st=iw" target="_blank" 
              style="position: absolute; top: 75%; left: 20%; width: 60%; height: 8%;">
           </a>
-          
         </div>
+        <p class="eyebrow">Sugerencias de Hotel</p>
+        <p>Te recomendamos los siguientes hoteles cercanos a la ceremonia:</p>
       </div>
 
-    <!-- EL CEREBRO DE TU PÁGINA (JavaScript) -->
     <script>
       function mostrarPregunta1() {
-        // Seleccionamos la portada y la ocultamos
         document.getElementById('pantalla-portada').style.display = 'none';
-        // Seleccionamos la pregunta 1 y la hacemos visible
         document.getElementById('pantalla-pregunta1').style.display = 'block';
       }
 
-      // IMPORTANTE: Esta función ahora está separada, afuera de la anterior
       function mostrarPregunta2() {
-        // Seleccionamos la pregunta 1 y la ocultamos
         document.getElementById('pantalla-pregunta1').style.display = 'none';
-        // Seleccionamos la pregunta 2 y la hacemos visible
         document.getElementById('pantalla-pregunta2').style.display = 'block';
       }
 
             function mostrarPregunta3() {
-        // Seleccionamos la pregunta 2 y la ocultamos
         document.getElementById('pantalla-pregunta2').style.display = 'none';
-        // Seleccionamos la pregunta 3 y la hacemos visible
         document.getElementById('pantalla-pregunta3').style.display = 'block';
       }
      function mostrarFinal() {
-        // Ocultamos la pregunta 3
         document.getElementById('pantalla-pregunta3').style.display = 'none';
         
-        // APAGAMOS LAS FLORES AL LLEGAR A LA INVITACIÓN
         document.getElementById('contenedor-flores').style.display = 'none';
         
-        // Mostramos la pantalla final de éxito
         document.getElementById('pantalla-final').style.display = 'block';
       }
     
 
       function trampaBlanco() {
-        // Seleccionamos el botón blanco y cambiamos su texto interno
         document.getElementById('boton-blanco').innerText = '¿?';
-        
-        // Opcional: Puedes cambiarle el color para que se vea más como un error
         document.getElementById('boton-blanco').style.color = '#cc0000';
         document.getElementById('boton-blanco').style.borderColor = '#cc0000';
       }
