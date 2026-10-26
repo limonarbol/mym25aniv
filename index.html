@@ -159,14 +159,27 @@ button {
         <button onclick="mostrarPregunta3()">Un poquito</button>
       </div>
 
+      <!-- PANTALLA 4: TERCERA PREGUNTA -->
       <div id="pantalla-pregunta3" style="display: none;">
         <p class="eyebrow">Pregunta 3 de 3</p>
         <h2>¿De qué color te vestirás en nuestra boda?</h2>
-        <button onclick="mostrarPregunta3()">Azul</button>
-        <button onclick="mostrarPregunta3()">Rojo</button>
-        <button onclick="mostrarPregunta3()">Blanco</button>
-        <button onclick="mostrarPregunta3()">Negro</button>
-        <button onclick="mostrarPregunta3()">Rosa</button>
+        
+        <!-- Los colores válidos llevan a la pantalla final -->
+        <button onclick="mostrarFinal()">Azul</button>
+        <button onclick="mostrarFinal()">Rojo</button>
+        
+        <!-- El botón blanco tiene su propio ID y su propia función -->
+        <button id="boton-blanco" onclick="trampaBlanco()">Blanco</button>
+        
+        <button onclick="mostrarFinal()">Negro</button>
+        <button onclick="mostrarFinal()">Rosa</button>
+      </div>
+
+      <!-- PANTALLA FINAL: APROBADO (Oculta por defecto) -->
+      <div id="pantalla-final" style="display: none;">
+        <p class="eyebrow">¡Aprobaste!</p>
+        <h2>¡Tienes una invitación!</h2>
+        <p style="color: var(--olive); font-style: italic;">Nos vemos en la boda 🤍</p>
       </div>
     </main>
 
@@ -192,6 +205,21 @@ button {
         document.getElementById('pantalla-pregunta2').style.display = 'none';
         // Seleccionamos la pregunta 3 y la hacemos visible
         document.getElementById('pantalla-pregunta3').style.display = 'block';
+      }
+      function mostrarFinal() {
+        // Ocultamos la pregunta 3
+        document.getElementById('pantalla-pregunta3').style.display = 'none';
+        // Mostramos la pantalla final de éxito
+        document.getElementById('pantalla-final').style.display = 'block';
+      }
+
+      function trampaBlanco() {
+        // Seleccionamos el botón blanco y cambiamos su texto interno
+        document.getElementById('boton-blanco').innerText = '¿?';
+        
+        // Opcional: Puedes cambiarle el color para que se vea más como un error
+        document.getElementById('boton-blanco').style.color = '#cc0000';
+        document.getElementById('boton-blanco').style.borderColor = '#cc0000';
       }
 
       function esconderNo() {
