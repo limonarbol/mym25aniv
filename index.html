@@ -129,25 +129,28 @@ button {
         .botones-hoteles button {
           width: auto; /
         }
-      /* === ANIMACIÓN DE FOTOS CAÍDAS === */
+/* === ANIMACIÓN DE FOTOS CAÍDAS (Versión Segura para Móviles) === */
       .foto-animada {
-        opacity: 0; /* Empiezan invisibles */
-        transform: rotate(var(--giro)); /* Toman el giro desde el principio */
+        opacity: 0; 
+      }
+      
+      .foto1.visible {
+        animation: caer1 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+      }
+      
+      .foto2.visible {
+        animation: caer2 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
       }
 
-      .foto-animada.visible {
-        animation: caerFoto 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+      @keyframes caer1 {
+        0% { opacity: 0; transform: translateY(-100px) rotate(0deg) scale(1.1); }
+        100% { opacity: 1; transform: translateY(0) rotate(-10deg) scale(1); } /* Gira a la izquierda */
       }
 
-      @keyframes caerFoto {
-        0% {
-          opacity: 0;
-          transform: translateY(-150px) rotate(var(--giro)) scale(1.1); 
-        }
-        100% {
-          opacity: 1;
-          transform: translateY(0) rotate(var(--giro)) scale(1);
-        }
+      @keyframes caer2 {
+        0% { opacity: 0; transform: translateY(-100px) rotate(0deg) scale(1.1); }
+        100% { opacity: 1; transform: translateY(0) rotate(8deg) scale(1); } /* Gira a la derecha */
+      }
       }
       }
       
@@ -218,14 +221,12 @@ button {
           <img src="fotos/polaroid1.png" class="foto-animada"
                style="position: absolute; 
                       top: 46%; left: 12%; width: 25%; 
-                      --giro: -10deg; /* Solo dejamos la variable del giro */
                       box-shadow: 3px 5px 15px rgba(0,0,0,0.3); border-radius: 4px; pointer-events: none;">
                       
           <!-- Foto 2 -->
           <img src="fotos/polaroid2.png" class="foto-animada"
                style="position: absolute; 
                       top: 66%; right: 12%; width: 25%; 
-                      --giro: 8deg; /* Solo dejamos la variable del giro */
                     box-shadow: 3px 5px 15px rgba(0,0,0,0.3); border-radius: 4px; pointer-events: none;">
                       
           <!-- ==== FIN DE FOTOS CAÍDAS ==== -->
