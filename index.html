@@ -118,37 +118,40 @@ button {
 <body>
     <div id="contenedor-invitacion" style="position: relative; width: 100%; min-height: 100vh; overflow: hidden; display: grid; place-items: center; padding: 2rem;">
       
-      <!-- CAJA DE FLORES (Nombres corregidos sin espacios) -->
-      <div id="contenedor-flores">
-        <img src="flor1.png" alt="" style="position: absolute; top: 0; left: 0; width: clamp(80px, 15vw, 150px); pointer-events: none;">
-        <img src="flor2.png" alt="" style="position: absolute; top: 0; right: 0; width: clamp(80px, 15vw, 150px); pointer-events: none;">
-        <img src="flor3.png" alt="" style="position: absolute; bottom: 0; left: 0; width: clamp(80px, 15vw, 150px); pointer-events: none;">
-        <img src="flor4.png" alt="" style="position: absolute; bottom: 0; right: 0; width: clamp(80px, 15vw, 150px); pointer-events: none;">
+      <!-- CAJA DE FLORES (Ahora tiene pointer-events: none y position: absolute para no estorbar) -->
+      <div id="contenedor-flores" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1;">
+        <img src="flor1.png" alt="" style="position: absolute; top: 0; left: 0; width: clamp(80px, 15vw, 150px);">
+        <img src="flor2.png" alt="" style="position: absolute; top: 0; right: 0; width: clamp(80px, 15vw, 150px);">
+        <img src="flor3.png" alt="" style="position: absolute; bottom: 0; left: 0; width: clamp(80px, 15vw, 150px);">
+        <img src="flor4.png" alt="" style="position: absolute; bottom: 0; right: 0; width: clamp(80px, 15vw, 150px);">
       </div>
 
-      <!-- Eliminamos el <main> duplicado que tenías -->
+      <!-- ÚNICA ETIQUETA MAIN -->
       <main style="position: relative; z-index: 10; width: min(100%, 48rem); text-align: center;">
-      <!-- PANTALLA 1: PORTADA -->
-      <div id="pantalla-portada">
-        <p class="eyebrow">Porque a donde quiera que tú fueres, iré yo, y donde quiera que vivieres, viviré. Tu pueblo será mi pueblo, y tu Dios mi Dios.</p>
-        <p class="eyebrow">Ruth 1:16</p>
-        <hr class="rule">
-      
-        <h1>¿Quieres venir a nuestras Bodas de Plata?</h1>
-        <hr class="rule">
-        <br>
         
-        <!-- Este es el mensaje oculto que aparecerá -->
-        <p id="mensaje-trampa" style="color: var(--clay); font-style: italic; display: none;">
-          Vuelve a intentar...
-        </p>
+        <!-- PANTALLA 1: PORTADA -->
+        <div id="pantalla-portada">
+          <p class="eyebrow">Porque a donde quiera que tú fueres, iré yo, y donde quiera que vivieres, viviré. Tu pueblo será mi pueblo, y tu Dios mi Dios.</p>
+          <p class="eyebrow">Ruth 1:16</p>
+          <hr class="rule">
+        
+          <h1>¿Quieres venir a nuestras Bodas de Plata?</h1>
+          <hr class="rule">
+          <br>
+          
+          <!-- Este es el mensaje oculto que aparecerá -->
+          <p id="mensaje-trampa" style="color: var(--clay); font-style: italic; display: none;">
+            Vuelve a intentar...
+          </p>
 
-        <!-- Contenedor de los botones Sí y No -->
-        <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 2rem;">
-          <button onclick="mostrarPregunta1()">Sí</button>
-          <button id="boton-no" onclick="esconderNo()">No</button>
+          <!-- Contenedor de los botones Sí y No -->
+          <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 2rem;">
+            <button onclick="mostrarPregunta1()">Sí</button>
+            <button id="boton-no" onclick="esconderNo()">No</button>
+          </div>
         </div>
-      </div>
+
+        <!-- AQUÍ CONTINÚA TU PANTALLA 2 (PREGUNTA 1) EXACTAMENTE COMO LA TIENES... -->
 
     <!-- PANTALLA 2: PRIMERA PREGUNTA -->
       <div id="pantalla-pregunta1" style="display: none;">
@@ -227,7 +230,7 @@ button {
         // Mostramos la pantalla final de éxito
         document.getElementById('pantalla-final').style.display = 'block';
       }
-      
+    
 
       function trampaBlanco() {
         // Seleccionamos el botón blanco y cambiamos su texto interno
